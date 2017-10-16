@@ -1,0 +1,11 @@
+@model IEnumerable<Data.Domain.Item>
+@{
+    ViewData["Title"] = "Items";
+}
+
+@foreach (var item in Model)
+{
+    <li>@Html.DisplayFor(modelItem =>item.Id) </li>
+    <li>@Html.DisplayFor(modelItem => item.Name) </li>
+    <li>@Html.DisplayFor(modelItem => item.Date) </li>
+}
