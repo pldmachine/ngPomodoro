@@ -9,8 +9,10 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { ProjectsComponent } from "./components/project/projects.component";
-import { ProjectDetailsComponent } from "./components/project/details/projectDetails.component";
+import { ProjectsListComponent } from "./components/projects/list/projects-list.component";
+import { ProjectDetailsComponent } from "./components/projects/details/project-details.component";
+import { DataService } from './services/data.service';
+
 
 @NgModule({
     declarations: [
@@ -19,7 +21,7 @@ import { ProjectDetailsComponent } from "./components/project/details/projectDet
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        ProjectsComponent,
+        ProjectsListComponent,
         ProjectDetailsComponent
     ],
     imports: [
@@ -29,12 +31,16 @@ import { ProjectDetailsComponent } from "./components/project/details/projectDet
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'project', component: ProjectsComponent },
+            { path: 'projects', component: ProjectsListComponent },
+            { path: 'project/:id', component: ProjectDetailsComponent },
             { path: 'details', component: ProjectDetailsComponent },      
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ])
+    ],
+    providers: [
+        DataService
     ]
 })
 export class AppModuleShared {
