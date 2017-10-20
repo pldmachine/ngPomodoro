@@ -41,17 +41,8 @@ namespace ngP_Web
                 options.SwaggerDoc("v1", new Info
                 {
                     Version = "v1",
-                    Title = "ASP.NET Core Customers API",
-                    Description = "ASP.NET Core/Angular Customers Swagger Documentation",
-                    TermsOfService = "None",
-                    Contact = new Contact { Name = "Dan Wahlin", Url = "http://twitter.com/danwahlin" },
-                    License = new License { Name = "MIT", Url = "https://en.wikipedia.org/wiki/MIT_License" }
+                    Title = "ASP.NET Core Customers API"
                 });
-
-                //Add XML comment document by uncommenting the following
-                // var filePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "MyApi.xml");
-                // options.IncludeXmlComments(filePath);
-
             });
 
         }

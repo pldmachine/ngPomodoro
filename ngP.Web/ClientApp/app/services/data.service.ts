@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core'
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { IProject } from '../model/project-interface'
+import { IPagedResults } from '../shared/IPagedResults'
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
@@ -23,6 +24,38 @@ export class DataService {
             })
             .catch(this.handleError);
     }
+
+    getProjectsPage(page: number, pageSize: number): Observable<IPagedResults<IProject[]>> {
+        return this.http.get(`${this.baseUrl}/page/${page}/${pageSize}`)
+            .map((res: Response) => {
+                const totalRecords = +res.headers!.get('x-inlinecount')!;
+                let projects = res.json();
+                return {
+                    results: projects,
+                    totalRecords: totalRecords
+                };
+            })
+            .catch(this.handleError);
+    }
+
+    updateProject(project: IProject): Observable<IProject> {
+        return this.http.put(this.baseUrl + '/' + project.id, project)
+            .map((res: Response) => {
+                const data = res.json();
+                console.log('updateProject status: ' + data.status);
+                return data.project;
+            })
+            .catch(this.handleError);
+    }
+
+
+
+    getProject(id: string): Observable<IProject> {
+        return this.http.get(this.baseUrl + '/' + id)
+            .map((res: Response) => res.json())
+            .catch(this.handleError);
+    }
+
 
     private handleError(error: any) {
         console.error('server error:', error);

@@ -29,6 +29,7 @@
   <ItemGroup>
     <None Remove="ClientApp\app\components\projects\project.component.ts" />
     <None Remove="ClientApp\app\services\data.service.ts" />
+    <None Remove="ClientApp\app\shared\IPagedResults.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +38,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\services\data.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\IPagedResults.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
